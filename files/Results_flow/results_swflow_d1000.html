@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2048 Diracs Results</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #aaa;
+      padding: 8px;
+      text-align: right;
+      cursor: pointer;
+    }
+    th {
+      background-color: #f2f2f2;
+      color: #000;
+    }
+    tr:nth-child(even) {
+      background-color: #fdfdfd;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    td:first-child, th:first-child {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>Measures of 2048 Diracs in Dimension 1000</h1>
+  <h2>(Columns can be sorted by clicking on name)</h2>
+  <table id="resultsTable">
+    <thead>
+      <tr>
+        <th onclick="sortTable(0)">Number of gradient steps</th>
+        <th onclick="sortTable(1)">Number of projections</th>
+        <th onclick="sortTable(2)">Learning rate</th>
+        <th onclick="sortTable(3)">time (s)</th>
+        <th onclick="sortTable(4)">SW(u_k, v) / SW(u_0, v)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- New dataset -->
+      <tr><td>100</td><td>100</td><td>10</td><td>0.550838</td><td>0.522785</td></tr>
+      <tr><td>100</td><td>100</td><td>100</td><td>0.565079</td><td>0.383409</td></tr>
+      <tr><td>100</td><td>1000</td><td>10</td><td>3.26457</td><td>0.514082</td></tr>
+      <tr><td>100</td><td>1000</td><td>100</td><td>3.17951</td><td>0.382333</td></tr>
+      <tr><td>100</td><td>1000</td><td>1000</td><td>3.0883</td><td>1.31073</td></tr>
+      <tr><td>100</td><td>10000</td><td>10</td><td>30.9972</td><td>0.512153</td></tr>
+      <tr><td>100</td><td>10000</td><td>100</td><td>30.9431</td><td>0.381978</td></tr>
+      <tr><td>100</td><td>10000</td><td>1000</td><td>30.9644</td><td>0.359887</td></tr>
+      <tr><td>1000</td><td>100</td><td>10</td><td>4.89256</td><td>0.382041</td></tr>
+      <tr><td>1000</td><td>100</td><td>100</td><td>4.80494</td><td>0.36644</td></tr>
+      <tr><td>1000</td><td>1000</td><td>10</td><td>30.6111</td><td>0.382634</td></tr>
+      <tr><td>1000</td><td>1000</td><td>100</td><td>30.5681</td><td>0.35934</td></tr>
+      <tr><td>1000</td><td>1000</td><td>1000</td><td>30.7114</td><td>0.358726</td></tr>
+      <tr><td>1000</td><td>10000</td><td>10</td><td>307.668</td><td>0.382043</td></tr>
+      <tr><td>1000</td><td>10000</td><td>100</td><td>307.651</td><td>0.358987</td></tr>
+      <tr><td>1000</td><td>10000</td><td>1000</td><td>307.724</td><td>0.316184</td></tr>
+      <tr><td>10000</td><td>100</td><td>10</td><td>46.9346</td><td>0.359989</td></tr>
+      <tr><td>10000</td><td>100</td><td>100</td><td>47.5539</td><td>0.334375</td></tr>
+      <tr><td>10000</td><td>1000</td><td>10</td><td>304.178</td><td>0.359525</td></tr>
+      <tr><td>10000</td><td>1000</td><td>100</td><td>303.893</td><td>0.31624</td></tr>
+      <tr><td>10000</td><td>1000</td><td>1000</td><td>304.511</td><td>0.333978</td></tr>
+      <tr><td>10000</td><td>10000</td><td>10</td><td>3069.42</td><td>0.359094</td></tr>
+      <tr><td>10000</td><td>10000</td><td>100</td><td>3078.04</td><td>0.314604</td></tr>
+      <tr><td>10000</td><td>10000</td><td>1000</td><td>3069.25</td><td>0.310206</td></tr>
+      <tr><td>100000</td><td>100</td><td>10</td><td>468.62</td><td>0.316029</td></tr>
+      <tr><td>100000</td><td>100</td><td>100</td><td>468.359</td><td>0.333811</td></tr>
+      <tr><td>100000</td><td>1000</td><td>10</td><td>3018.32</td><td>0.314722</td></tr>
+      <tr><td>100000</td><td>1000</td><td>100</td><td>3015.42</td><td>0.310007</td></tr>
+      <tr><td>100000</td><td>1000</td><td>1000</td><td>3012.24</td><td>0.333612</td></tr>
+      <tr><td>100000</td><td>10000</td><td>10</td><td>30540.7</td><td>0.314161</td></tr>
+      <tr><td>100000</td><td>10000</td><td>100</td><td>30539.5</td><td>0.300831</td></tr>
+      <tr><td>100000</td><td>10000</td><td>1000</td><td>30464.7</td><td>4.31616e-15</td></tr>
+    </tbody>
+  </table>
+  <script>
+    let sortDirection = {};
+
+    function sortTable(columnIndex) {
+      const table = document.getElementById("resultsTable");
+      const tbody = table.tBodies[0];
+      const rows = Array.from(tbody.rows);
+
+      // Toggle sort direction
+      sortDirection[columnIndex] = !sortDirection[columnIndex];
+
+      rows.sort((a, b) => {
+        const aText = a.cells[columnIndex].textContent.trim();
+        const bText = b.cells[columnIndex].textContent.trim();
+
+        const aNum = parseFloat(aText);
+        const bNum = parseFloat(bText);
+
+        const aVal = isNaN(aNum) ? aText : aNum;
+        const bVal = isNaN(bNum) ? bText : bNum;
+
+        if (aVal < bVal) return sortDirection[columnIndex] ? -1 : 1;
+        if (aVal > bVal) return sortDirection[columnIndex] ? 1 : -1;
+        return 0;
+      });
+
+      rows.forEach(row => tbody.appendChild(row)); // Reattach sorted rows
+    }
+  </script>
+</body>
+</html>

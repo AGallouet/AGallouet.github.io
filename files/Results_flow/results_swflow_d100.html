@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SW Flow in dimension 100</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #aaa;
+      padding: 8px;
+      text-align: right;
+      cursor: pointer;
+    }
+    th {
+      background-color: #f2f2f2;
+      color: #000;
+    }
+    tr:nth-child(even) {
+      background-color: #fdfdfd;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    td:first-child, th:first-child {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>Results of SW flows in dimension 100</h1>
+  
+  <h2>Time for Batch OT</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Batch Size</th>
+      <th>Time computer (s)</th>
+      <th>Time PAGODA (s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>128</td><td>0.02</td> <td>0.06</td> </tr>
+    <tr><td>2048</td><td>0.63</td> <td>1.7</td> </tr>
+    <tr><td>4096</td><td>2.29 (max iter) </td> <td> 2.5 (max iter)</td> </tr>
+  </tbody>
+</table>
+
+  
+  <h2>Table of results for measures of 2048 diracs in dimension 100</h2>
+  (Columns can be sorted by clicking on name)
+  <table id="resultsTable">
+    <thead>
+      <tr>
+        <th onclick="sortTable(0)">Number of gradient steps</th>
+        <th onclick="sortTable(1)">Number of projections</th>
+        <th onclick="sortTable(2)">Learning rate</th>
+        <th onclick="sortTable(3)">time (s)</th>
+        <th onclick="sortTable(4)">SW(u_k, v) / SW(u_0, v)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>100</td><td>10</td><td>1</td><td>0.164803</td><td>0.472074</td></tr>
+      <tr><td>100</td><td>10</td><td>10</td><td>0.102963</td><td>0.216941</td></tr>
+      <tr><td>100</td><td>100</td><td>1</td><td>0.182423</td><td>0.452417</td></tr>
+      <tr><td>100</td><td>100</td><td>10</td><td>0.124489</td><td>0.20018</td></tr>
+      <tr><td>100</td><td>100</td><td>100</td><td>0.117438</td><td>0.136546</td></tr>
+      <tr><td>100</td><td>1000</td><td>1</td><td>0.833632</td><td>0.455624</td></tr>
+      <tr><td>100</td><td>1000</td><td>10</td><td>0.778648</td><td>0.201246</td></tr>
+      <tr><td>100</td><td>1000</td><td>100</td><td>0.679935</td><td>0.0928675</td></tr>
+      <tr><td>1000</td><td>10</td><td>1</td><td>0.480614</td><td>0.198615</td></tr>
+      <tr><td>1000</td><td>10</td><td>10</td><td>0.477921</td><td>0.105917</td></tr>
+      <tr><td>1000</td><td>100</td><td>1</td><td>0.975446</td><td>0.199979</td></tr>
+      <tr><td>1000</td><td>100</td><td>10</td><td>1.17974</td><td>0.0930475</td></tr>
+      <tr><td>1000</td><td>100</td><td>100</td><td>1.03078</td><td>0.0835821</td></tr>
+      <tr><td>1000</td><td>1000</td><td>1</td><td>6.66314</td><td>0.199272</td></tr>
+      <tr><td>1000</td><td>1000</td><td>10</td><td>6.62657</td><td>0.0922859</td></tr>
+      <tr><td>1000</td><td>1000</td><td>100</td><td>6.71508</td><td>0.0754507</td></tr>
+      <tr><td>10000</td><td>10</td><td>1</td><td>6.31685</td><td>0.0930368</td></tr>
+      <tr><td>10000</td><td>10</td><td>10</td><td>6.53919</td><td>0.083482</td></tr>
+      <tr><td>10000</td><td>100</td><td>1</td><td>10.2198</td><td>0.0922568</td></tr>
+      <tr><td>10000</td><td>100</td><td>10</td><td>10.0876</td><td>0.0756016</td></tr>
+      <tr><td>10000</td><td>100</td><td>100</td><td>10.1813</td><td>0.0821584</td></tr>
+      <tr><td>10000</td><td>1000</td><td>1</td><td>66.9805</td><td>0.0920823</td></tr>
+      <tr><td>10000</td><td>1000</td><td>10</td><td>67.0885</td><td>0.0746696</td></tr>
+      <tr><td>10000</td><td>1000</td><td>100</td><td>66.7669</td><td>0.0288367</td></tr>
+      <tr><td>100000</td><td>10</td><td>1</td><td>58.7417</td><td>0.0755984</td></tr>
+      <tr><td>100000</td><td>10</td><td>10</td><td>63.3239</td><td>0.0822453</td></tr>
+      <tr><td>100000</td><td>100</td><td>1</td><td>102.394</td><td>0.0746564</td></tr>
+      <tr><td>100000</td><td>100</td><td>10</td><td>116.481</td><td>0.0285297</td></tr>
+      <tr><td>100000</td><td>100</td><td>100</td><td>141.55</td><td>0.0821322</td></tr>
+      <tr><td>100000</td><td>1000</td><td>1</td><td>852.506</td><td>0.0746223</td></tr>
+      <tr><td>100000</td><td>1000</td><td>10</td><td>854.832</td><td>0.0237895</td></tr>
+      <tr><td>100000</td><td>1000</td><td>100</td><td>916.687</td><td>4.15482e-16</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Measures of 128 Diracs in Dimension 100</h2>
+<table>
+  <thead>
+    <tr>
+      <th onclick="sortTable(0)">nb_steps</th>
+      <th onclick="sortTable(0)">nb_slices</th>
+      <th onclick="sortTable(0)">tau</th>
+      <th onclick="sortTable(0)">time (s)</th>
+      <th onclick="sortTable(0)">Relative SW</th>
+      <th onclick="sortTable(0)">Relative Wass</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>500</td><td>500</td><td>100</td><td>0.597305</td><td>0.16584</td><td>0.32916</td></tr>
+    <tr><td>500</td><td>500</td><td>125</td><td>0.350269</td><td>0.142817</td><td>0.261338</td></tr>
+    <tr><td>500</td><td>500</td><td>150</td><td>0.383282</td><td>0.0547908</td><td>0.0629778</td></tr>
+    <tr><td>500</td><td>500</td><td>175</td><td>0.347542</td><td>0.0982687</td><td>0.157601</td></tr>
+    <tr><td>500</td><td>500</td><td>200</td><td>0.371706</td><td>0.896394</td><td>0.306145</td></tr>
+    <tr><td>500</td><td>700</td><td>100</td><td>0.335827</td><td>0.138417</td><td>0.257317</td></tr>
+    <tr><td>500</td><td>700</td><td>125</td><td>0.314984</td><td>0.0934727</td><td>0.168946</td></tr>
+    <tr><td>500</td><td>700</td><td>150</td><td>0.325517</td><td>0.0617724</td><td>0.10658</td></tr>
+    <tr><td>500</td><td>700</td><td>175</td><td>0.446476</td><td>0.0404182</td><td>0.0409268</td></tr>
+    <tr><td>500</td><td>700</td><td>200</td><td>0.326986</td><td>0.89604</td><td>0.305091</td></tr>
+    <tr><td>500</td><td>1000</td><td>100</td><td>0.341546</td><td>0.130391</td><td>0.252959</td></tr>
+    <tr><td>500</td><td>1000</td><td>125</td><td>0.333115</td><td>0.080263</td><td>0.1268</td></tr>
+    <tr><td>500</td><td>1000</td><td>150</td><td>0.354751</td><td>0.0492413</td><td>0.056634</td></tr>
+    <tr><td>500</td><td>1000</td><td>175</td><td>0.336964</td><td>3.11361e-05</td><td>1.0601e-05</td></tr>
+    <tr><td>500</td><td>1000</td><td>200</td><td>0.377021</td><td>0.894774</td><td>0.304574</td></tr>
+    <tr><td>1000</td><td>500</td><td>100</td><td>0.73185</td><td>6.59249e-16</td><td>1.10052e-08</td></tr>
+    <tr><td>1000</td><td>500</td><td>125</td><td>0.758921</td><td>8.67042e-16</td><td>1.10702e-08</td></tr>
+    <tr><td>1000</td><td>500</td><td>150</td><td>0.722464</td><td>1.33436e-15</td><td>1.08081e-08</td></tr>
+    <tr><td>1000</td><td>500</td><td>175</td><td>0.810443</td><td>0.00257932</td><td>0.00089292</td></tr>
+    <tr><td>1000</td><td>500</td><td>200</td><td>0.716832</td><td>0.894828</td><td>0.304597</td></tr>
+    <tr><td>1000</td><td>700</td><td>100</td><td>0.665241</td><td>5.59715e-16</td><td>1.11025e-08</td></tr>
+    <tr><td>1000</td><td>700</td><td>125</td><td>0.611177</td><td>7.26283e-16</td><td>1.04027e-08</td></tr>
+    <tr><td>1000</td><td>700</td><td>150</td><td>0.641532</td><td>1.03296e-15</td><td>1.11989e-08</td></tr>
+    <tr><td>1000</td><td>700</td><td>175</td><td>0.683664</td><td>4.06271e-06</td><td>1.38294e-06</td></tr>
+    <tr><td>1000</td><td>700</td><td>200</td><td>0.667783</td><td>0.895537</td><td>0.304876</td></tr>
+    <tr><td>1000</td><td>1000</td><td>100</td><td>0.721565</td><td>4.82387e-16</td><td>1.09071e-08</td></tr>
+    <tr><td>1000</td><td>1000</td><td>125</td><td>0.705463</td><td>6.25415e-16</td><td>1.07749e-08</td></tr>
+    <tr><td>1000</td><td>1000</td><td>150</td><td>0.676039</td><td>8.62412e-16</td><td>1.12309e-08</td></tr>
+    <tr><td>1000</td><td>1000</td><td>175</td><td>0.696477</td><td>1.74153e-15</td><td>1.19121e-08</td></tr>
+    <tr><td>1000</td><td>1000</td><td>200</td><td>0.736952</td><td>0.894804</td><td>0.304585</td></tr>
+  </tbody>
+</table>
+
+
+  <h2>Graphs</h2>
+
+  <img src="flow_d100m128.png" alt="Convergence speed of sw flow" style="width: 100%; max-width: 800px; margin-bottom: 20px;" />
+  <img src="flow_d100m4096.png" alt="Convergence speed of sw flow" style="width: 150%; max-width: 800px; margin-bottom: 20px;" />
+  
+  <h2>Same graphs in time</h2>
+  
+  <img src="flow_d100m128time.png" alt="Convergence speed of sw flow" style="width: 150%; max-width: 800px; margin-bottom: 20px;" />
+  <img src="flow_d100m4096time.png" alt="Convergence speed of sw flow" style="width: 150%; max-width: 800px; margin-bottom: 20px;" />
+  
+  <script>
+    let sortDirection = {};
+
+    function sortTable(columnIndex) {
+      const table = document.getElementById("resultsTable");
+      const tbody = table.tBodies[0];
+      const rows = Array.from(tbody.rows);
+
+      // Toggle sort direction
+      sortDirection[columnIndex] = !sortDirection[columnIndex];
+
+      rows.sort((a, b) => {
+        const aText = a.cells[columnIndex].textContent.trim();
+        const bText = b.cells[columnIndex].textContent.trim();
+
+        const aNum = parseFloat(aText);
+        const bNum = parseFloat(bText);
+
+        const aVal = isNaN(aNum) ? aText : aNum;
+        const bVal = isNaN(bNum) ? bText : bNum;
+
+        if (aVal < bVal) return sortDirection[columnIndex] ? -1 : 1;
+        if (aVal > bVal) return sortDirection[columnIndex] ? 1 : -1;
+        return 0;
+      });
+
+      rows.forEach(row => tbody.appendChild(row)); // Reattach sorted rows
+    }
+  </script>
+</body>
+</html>
