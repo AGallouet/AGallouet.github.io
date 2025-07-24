@@ -64,11 +64,11 @@
   <table id="resultsTable">
     <thead>
       <tr>
-        <th onclick="sortTable(0)">Number of gradient steps</th>
-        <th onclick="sortTable(1)">Number of projections</th>
-        <th onclick="sortTable(2)">Learning rate</th>
-        <th onclick="sortTable(3)">time (s)</th>
-        <th onclick="sortTable(4)">SW(u_k, v) / SW(u_0, v)</th>
+        <th onclick="sortTableById('resultsTable',0)">Number of gradient steps</th>
+        <th onclick="sortTableById('resultsTable',1)">Number of projections</th>
+        <th onclick="sortTableById('resultsTable',2)">Learning rate</th>
+        <th onclick="sortTableById('resultsTable',3)">time (s)</th>
+        <th onclick="sortTableById('resultsTable',4)">SW(u_k, v) / SW(u_0, v)</th>
       </tr>
     </thead>
     <tbody>
@@ -108,15 +108,15 @@
   </table>
 
   <h2>Measures of 128 Diracs in Dimension 100</h2>
-<table>
+<table id="diracs128Table">
   <thead>
     <tr>
-      <th onclick="sortTable(0)">nb_steps</th>
-      <th onclick="sortTable(0)">nb_slices</th>
-      <th onclick="sortTable(0)">tau</th>
-      <th onclick="sortTable(0)">time (s)</th>
-      <th onclick="sortTable(0)">Relative SW</th>
-      <th onclick="sortTable(0)">Relative Wass</th>
+      <th onclick="sortTableById('diracs128Table', 0)">nb_steps</th>
+      <th onclick="sortTableById('diracs128Table', 1)">nb_slices</th>
+      <th onclick="sortTableById('diracs128Table', 2)">tau</th>
+      <th onclick="sortTableById('diracs128Table', 3)">time (s)</th>
+      <th onclick="sortTableById('diracs128Table', 4)">Relative SW</th>
+      <th onclick="sortTableById('diracs128Table', 5)">Relative Wass</th>
     </tr>
   </thead>
   <tbody>
@@ -157,41 +157,30 @@
   <h2>Graphs</h2>
 
   <img src="flow_d100m128.png" alt="Convergence speed of sw flow" style="width: 100%; max-width: 800px; margin-bottom: 20px;" />
-  <img src="flow_d100m4096.png" alt="Convergence speed of sw flow" style="width: 150%; max-width: 800px; margin-bottom: 20px;" />
+  <img src="flow_d100m4096.png" alt="Convergence speed of sw flow" style="width: 100%; max-width: 800px; margin-bottom: 20px;" />
   
   <h2>Same graphs in time</h2>
   
-  <img src="flow_d100m128time.png" alt="Convergence speed of sw flow" style="width: 150%; max-width: 800px; margin-bottom: 20px;" />
-  <img src="flow_d100m4096time.png" alt="Convergence speed of sw flow" style="width: 150%; max-width: 800px; margin-bottom: 20px;" />
+  <img src="flow_d100m128time.png" alt="Convergence speed of sw flow" style="width: 100%; max-width: 800px; margin-bottom: 20px;" />
+  <img src="flow_d100m4096time.png" alt="Convergence speed of sw flow" style="width: 100%; max-width: 800px; margin-bottom: 20px;" />
   
-  <script>
-    let sortDirection = {};
+ <script>
+  function sortTableById(tableId, columnIndex) {
+    const table = document.getElementById(tableId);
+    const tbody = table.tBodies[0];
+    const rows = Array.from(tbody.rows);
+    const isAsc = table.getAttribute("data-sort-dir") !== "desc";
 
-    function sortTable(columnIndex) {
-      const table = document.getElementById("resultsTable");
-      const tbody = table.tBodies[0];
-      const rows = Array.from(tbody.rows);
+    rows.sort((a, b) => {
+      const aVal = parseFloat(a.cells[columnIndex].textContent) || a.cells[columnIndex].textContent;
+      const bVal = parseFloat(b.cells[columnIndex].textContent) || b.cells[columnIndex].textContent;
 
-      // Toggle sort direction
-      sortDirection[columnIndex] = !sortDirection[columnIndex];
+      return isAsc ? (aVal > bVal ? 1 : -1) : (aVal < bVal ? 1 : -1);
+    });
 
-      rows.sort((a, b) => {
-        const aText = a.cells[columnIndex].textContent.trim();
-        const bText = b.cells[columnIndex].textContent.trim();
-
-        const aNum = parseFloat(aText);
-        const bNum = parseFloat(bText);
-
-        const aVal = isNaN(aNum) ? aText : aNum;
-        const bVal = isNaN(bNum) ? bText : bNum;
-
-        if (aVal < bVal) return sortDirection[columnIndex] ? -1 : 1;
-        if (aVal > bVal) return sortDirection[columnIndex] ? 1 : -1;
-        return 0;
-      });
-
-      rows.forEach(row => tbody.appendChild(row)); // Reattach sorted rows
-    }
-  </script>
+    rows.forEach(row => tbody.appendChild(row));
+    table.setAttribute("data-sort-dir", isAsc ? "desc" : "asc");
+  }
+</script>
 </body>
 </html>
