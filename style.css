@@ -39,9 +39,50 @@ footer {
   margin-top: 20px;
 }
 
-.profile-pic {
-  width: 150px;
-  border-radius: 50%;
+
+a {
+  color: #004466;
+}
+
+a:hover {
+  color: #006699;
+}
+
+.pdf-link {
+  font-size: 0.95em;
+  margin-left: 6px;
+}
+
+section ul {
+  padding-left: 20px;
+}
+
+section li {
   margin-bottom: 10px;
 }
 
+
+.header-container {
+  display: flex;
+  align-items: center;
+  padding: 20px 40px;
+  background: #004466;
+  color: #fff;
+}
+
+.profile-pic {
+  width: 150px;
+  border-radius: 50%;
+  margin-right: 30px;
+  flex-shrink: 0;
+}
+
+.header-text {
+  flex: 1;
+  text-align: center;
+}
+
+.header-spacer {
+  width: 150px; /* same as profile-pic */
+  flex-shrink: 0;
+}
