@@ -8,7 +8,8 @@ body {
 }
 
 header {
-  background: #004466;
+  /* background: #004466; */
+  background: #0c3e00;
   color: #fff;
   padding: 20px 40px;
   text-align: center;
@@ -41,11 +42,11 @@ footer {
 
 
 a {
-  color: #004466;
+  color: #0c3e00; /* #004466; */
 }
 
 a:hover {
-  color: #006699;
+  color:  #125b00;  /* #006699; */
 }
 
 .pdf-link {
@@ -66,7 +67,7 @@ section li {
   display: flex;
   align-items: center;
   padding: 20px 40px;
-  background: #004466;
+  background:  #115500;  /* #006699; */
   color: #fff;
 }
 
